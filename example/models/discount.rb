@@ -1,5 +1,5 @@
 class Discount
-   attr_reader :msg, :error_msg, :price_point, :delivery, :count, :delivery_reduction, :percent
+   attr_reader :msg, :error_msg
 
   def initialize(args = {})
     @price_point = args[:price_point] || 30

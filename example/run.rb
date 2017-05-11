@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 require './models/broadcaster'
 require './models/delivery'
 require './models/material'
@@ -8,7 +6,6 @@ require './models/discount'
 
 standard_delivery = Delivery.new(:standard, 10.0)
 express_delivery = Delivery.new(:express, 20.0)
-# deliveries simply hold the info of the name (standard/express) & the price
 
 broadcaster_1 = Broadcaster.new(1, 'Viacom')
 broadcaster_2 = Broadcaster.new(2, 'Disney')
