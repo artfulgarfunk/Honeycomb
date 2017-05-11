@@ -12,7 +12,7 @@ class Discount
     @percent_remain = (100.to_f - @percent) / 100
   end
 
-  def update_price(deliveries, cost)
+  def final_price(deliveries, cost)
     (deliveries.count(@delivery) > @count) ? reduce_per(reduce_del(cost,deliveries)) : reduce_per(cost)
   end
 
