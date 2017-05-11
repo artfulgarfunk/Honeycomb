@@ -18,11 +18,11 @@ describe Discount do
   it 'is initialized with default values in the absence of given parameters' do
     expect{discount = Discount.new}.to_not raise_error
     discount = Discount.new
-    expect{discount.final_price(deliveries,cost)}.to_not raise_error
+    expect{discount.update_price(deliveries,cost)}.to_not raise_error
   end
 
   it 'determines the amount to discount from an order and returns the new cost' do
-    expect(subject.final_price(deliveries,cost)).to eq(40.5)
+    expect(subject.update_price(deliveries,cost)).to eq(40.5)
   end
 
   it 'by reducing the delivery cost based on what type of deliveries' do
