@@ -24,7 +24,7 @@ class Order
   end
 
   def add_new_discount(discount)
-    @discount ? raise('This order already has a discount') : @discount = discount
+    @discount ? raise("#{@discount.error_msg}") : @discount = discount
   end
 
   def remove_discount
@@ -55,7 +55,7 @@ class Order
       end
 
       result << output_separator
-      result << "Total: $#{final_price}"
+      result << "#{@discount.msg} \n Total: $#{final_price}"
     end.join("\n")
   end
 

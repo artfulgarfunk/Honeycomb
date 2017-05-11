@@ -54,7 +54,7 @@ describe Order do
       order = Order.new(material,discount)
       order.add broadcaster_1, express_delivery
       order.add broadcaster_2, express_delivery
-      expect{order.add_new_discount(discount)}.to raise_error('This order already has a discount')
+      expect{order.add_new_discount(discount)}.to raise_error('Discount Already Exists')
     end
   end
 

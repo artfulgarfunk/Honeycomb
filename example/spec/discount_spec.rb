@@ -47,4 +47,22 @@ describe Discount do
     expect(discount.reduce_per(100)).to eq(85)
   end
 
+  it "returns an error message 'Discount Already Exists' by default" do
+    expect(subject.error_msg).to eq('Discount Already Exists')
+  end
+
+  it "which can be defined on discount creation" do
+    discount = Discount.new({:error_msg => 'This is an error'})
+    expect(discount.error_msg).to eq('This is an error')
+  end
+
+  it "has a customisable message in case of displaying discount details etc" do
+    discount = Discount.new({:msg => 'Student Discount'})
+    expect(discount.msg).to eq('Student Discount')
+  end
+
+  it "with a default 'Customer Discount Applied' message" do
+    expect(subject.msg).to eq('Customer Discount Applied')
+  end
+
 end
