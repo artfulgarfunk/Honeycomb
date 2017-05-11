@@ -50,7 +50,12 @@ describe Order do
       expect(subject.final_price).to eq(40)
     end
 
+    it 'unless a discount already exists' do
+      order = Order.new(material,discount)
+      order.add broadcaster_1, express_delivery
+      order.add broadcaster_2, express_delivery
+      expect{order.add_new_discount(discount)}.to raise_error('This order already has a discount')
+    end
   end
-
 
 end

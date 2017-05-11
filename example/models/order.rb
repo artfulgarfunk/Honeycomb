@@ -24,7 +24,11 @@ class Order
   end
 
   def add_new_discount(discount)
-    @discount = discount
+    if @discount == false
+      @discount = discount
+    else
+      raise('This order already has a discount')
+    end
   end
 
   def remove_discount
