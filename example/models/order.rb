@@ -5,30 +5,30 @@ class Order
     price: 8
   }.freeze
 
-  attr_accessor :material, :items
+  attr_accessor :material, :items, :discount
 
   def initialize(material, discount = false)
     self.material = material
     self.items = []
-    @discount = discount
+    self.discount = discount
     @deliveries = []
   end
 
   def final_price
-    @discount ? discount_price : total_cost
+    self.discount ? discount_price : total_cost
   end
 
   def discount_price
     items.each { |x| @deliveries << x[1].name }
-    @discount.update_price(@deliveries, total_cost)
+    self.discount.update_price(@deliveries, total_cost)
   end
 
   def add_new_discount(discount)
-    @discount ? raise("#{@discount.error_msg}") : @discount = discount
+    self.discount ? raise("#{self.discount.error_msg}") : self.discount = discount
   end
 
   def remove_discount
-    @discount = false
+    self.discount = false
   end
 
   def add(broadcaster, delivery)
@@ -55,8 +55,12 @@ class Order
       end
 
       result << output_separator
-      result << "#{@discount.msg} \n Total: $#{final_price}"
+      result << "#{discount_msg}Total: $#{final_price}"
     end.join("\n")
+  end
+
+  def discount_msg
+    self.discount ? "#{self.discount.msg}\n": nil
   end
 
   private
@@ -64,6 +68,4 @@ class Order
   def output_separator
     @output_separator ||= COLUMNS.map { |_, width| '-' * width }.join(' | ')
   end
-
-  # add discount method: takes a an entire object
 end

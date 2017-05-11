@@ -11,6 +11,7 @@ describe Order do
   let(:express_delivery) { Delivery.new(:express, 20) }
   broadcaster_1 = Broadcaster.new(1, 'Viacom')
   broadcaster_2 = Broadcaster.new(2, 'Disney')
+  # double discount and allow it to recieve x and return y
 
   context 'when empty' do
     it 'costs nothing' do
